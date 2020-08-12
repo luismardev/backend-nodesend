@@ -59,7 +59,6 @@ exports.downloadFile = async (req, res, next) => {
 exports.deleteFile = async (req, res) => {
   try {
     fs.unlinkSync(`${__dirname}/../uploads/${req.file}`)
-    res.json({ msg: 'archivo eliminado' })
   } catch (error) {
     res.status(400).json({ msg: 'hubo un error' })
   }
