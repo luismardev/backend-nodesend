@@ -14,19 +14,3 @@ const conectarDB = async () => {
   }
 }
 module.exports = conectarDB
-
-// const mongoose = require("mongoose");
-
-// mongoose
-//   .connect("mongodb://localhost/test", {
-//     useNewUrlParser: true,
-//     useFindAndModify: false,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true,
-//   })
-//   .then(() => {
-//     console.log("database conectada");
-//   })
-//   .catch((err) => console.log(err));
-
-// module.exports = mongoose;

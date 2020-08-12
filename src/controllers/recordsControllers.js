@@ -35,22 +35,26 @@ exports.downloadFile = async (req, res, next) => {
   //! validar la existencia de la url
   const link = await Links.findOne({ name: req.params.file })
 
-  const file = `${__dirname}/../uploads/${req.params.file}`
+  fs.renameSync(`${__dirname}/../uploads/${link.name}`, `${__dirname}/../uploads/${link.originalName}`)
+
+  const file = `${__dirname}/../uploads/${link.originalName}`
+
   res.download(file)
 
   //! eliminando archivo
-  const { downloads, name, id } = link
+  const { downloads, id, originalName } = link
 
   //! eliminar si es menor a 1
   if (downloads === 1) {
     //! eliminar archivo
-    req.file = name
+    req.file = originalName
 
     //! eliminar data
     await Links.findOneAndRemove(id)
 
     return next()
   } else {
+    fs.renameSync(`${__dirname}/../uploads/${link.originalName}`, `${__dirname}/../uploads/${link.name}`)
     link.downloads--
     await link.save()
   }
