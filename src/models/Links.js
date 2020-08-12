@@ -10,7 +10,7 @@ const LinksSchema = new Schema({
     type: String,
     required: true
   },
-  original_name: {
+  originalName: {
     type: String,
     required: true
   },

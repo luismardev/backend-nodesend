@@ -1,11 +1,10 @@
-/* eslint-disable camelcase */
 const Links = require('../models/Links')
 const shortid = require('shortid')
 const bcrypt = require('bcrypt')
 const { validationResult } = require('express-validator')
 
 exports.newLink = async (req, res) => {
-  const { original_name, name } = req.body
+  const { originalName, name } = req.body
   //! revisar si hay errores
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
@@ -16,7 +15,7 @@ exports.newLink = async (req, res) => {
   const links = new Links()
   links.url = shortid.generate()
   links.name = name
-  links.original_name = original_name
+  links.originalName = originalName
 
   //! si el usuario esta autentificado
   if (req.user) {

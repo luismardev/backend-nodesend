@@ -8,7 +8,7 @@ const { check } = require('express-validator')
 router.post(
   '/',
   auth,
-  check('original_name', 'error falta nombre original del documento')
+  check('originalName', 'error falta nombre original del documento')
     .not()
     .isEmpty(),
   check('name', 'error falta nombre generado').not().isEmpty(),

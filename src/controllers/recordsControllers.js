@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 //! subida de archivos
 const multer = require('multer')
 const shortid = require('shortid')
@@ -8,18 +7,18 @@ const Links = require('../models/Links')
 exports.uploadFile = async (req, res) => {
   const settingsMulter = {
     limits: { fileSize: req.user ? 1024 * 1024 * 10 : 1024 * 1024 },
-    storage: (fileStorage = multer.diskStorage({
-      destination: (req, file, cb) => {
+    storage: multer.diskStorage({
+      destination: (_req, _file, cb) => {
         cb(null, `${__dirname}/../uploads`)
       },
-      filename: (req, file, cb) => {
+      filename: (_req, file, cb) => {
         const extension = file.originalname.substring(
           file.originalname.lastIndexOf('.'),
           file.originalname.length
         )
         cb(null, `${shortid.generate()}${extension}`)
       }
-    }))
+    })
   }
   const upload = multer(settingsMulter).single('records')
 
