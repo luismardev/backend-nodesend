@@ -12,10 +12,10 @@ conectarDB()
 const app = express()
 
 //! habilitar cors
-const options = {
-  origin: process.env.FRONTEND_URL
-}
-app.use(cors(options))
+// const options = {
+//   origin: process.env.FRONTEND_URL
+// }
+app.use(cors())
 
 //! parser
 app.use(express.json())
