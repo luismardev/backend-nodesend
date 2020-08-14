@@ -32,6 +32,6 @@ router.get('/google/callback', passport.authenticate('google', { session: false 
     httpOnly: !config.dev,
     secure: !config.dev
   })
-  res.redirect('http://localhost:3000')
+  res.redirect(`${process.env.FRONTEND_URL}`)
 })
 module.exports = router
