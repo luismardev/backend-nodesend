@@ -28,10 +28,10 @@ app.use(passport.initialize())
 app.use(express.static('uploads'))
 
 //! rutas de la app
-app.use('/api/users', require('./routes/users'))
-app.use('/api/auth', require('./routes/auth'))
-app.use('/api/links', require('./routes/links'))
-app.use('/api/records', require('./routes/records'))
+app.use('api/users', require('./routes/users'))
+app.use('api/auth', require('./routes/auth'))
+app.use('api/links', require('./routes/links'))
+app.use('api/records', require('./routes/records'))
 
 //! arrancar la app
 const port = process.env.PORT || 4000
