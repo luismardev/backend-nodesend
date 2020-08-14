@@ -2,10 +2,9 @@ const express = require('express')
 require('dotenv').config({ path: '.env' })
 const passport = require('passport')
 const cors = require('cors')
-const autentifiaciones = require('./middleware/passport')
-const { estrategiagoogle } = autentifiaciones
 const cookieParser = require('cookie-parser')
 const conectarDB = require('./config/database')
+require('./auth/strategies/google-auth')
 
 //! conectar db
 conectarDB()
@@ -23,7 +22,6 @@ app.use(express.json())
 app.use(cookieParser())
 
 //! passport
-estrategiagoogle()
 app.use(passport.initialize())
 
 //! habilitar carpeta publica
